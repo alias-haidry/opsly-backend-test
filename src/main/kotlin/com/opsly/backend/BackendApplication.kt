@@ -8,7 +8,7 @@ import org.springframework.scheduling.annotation.EnableAsync
 @SpringBootApplication
 @PropertySource("classpath:messages.properties")
 @EnableAsync
-class BackendApplication
+public class BackendApplication
 
 fun main(args: Array<String>) {
 	runApplication<BackendApplication>(*args)

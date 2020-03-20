@@ -1,5 +1,6 @@
 package com.opsly.backend.service.impl
 
+import com.opsly.backend.model.response.FacebookFeedResponse
 import com.opsly.backend.model.response.InstagramFeedResponse
 import com.opsly.backend.service.SocialNetworkService
 import com.opsly.backend.util.RestTemplateUtil
@@ -20,8 +21,8 @@ class InstagramServiceImpl : SocialNetworkService {
     lateinit var restTemplateUtil : RestTemplateUtil
 
     @Async
-    override fun getFeed(): Future<Any> {
-        return AsyncResult<Any>(restTemplateUtil.getData<InstagramFeedResponse>(url))
+    override fun getFeed(): Future<List<String>> {
+        return AsyncResult<List<String>>(restTemplateUtil.getData<InstagramFeedResponse>(url).map { response -> response.picture!! })
     }
 
 }

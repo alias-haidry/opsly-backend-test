@@ -9,6 +9,8 @@ import org.springframework.scheduling.annotation.Async
 import org.springframework.scheduling.annotation.AsyncResult
 import org.springframework.stereotype.Service
 import java.util.concurrent.Future
+import java.util.stream.Collector
+import java.util.stream.Collectors
 
 @Service("facebookService")
 public class FacebookServiceImpl : SocialNetworkService {
@@ -20,8 +22,8 @@ public class FacebookServiceImpl : SocialNetworkService {
     lateinit var restTemplateUtil : RestTemplateUtil
 
     @Async
-    override fun getFeed(): Future<Any> {
-        return AsyncResult<Any>(restTemplateUtil.getData<FacebookFeedResponse>(url))
+    override fun getFeed(): Future<List<String>> {
+        return AsyncResult<List<String>>(restTemplateUtil.getData<FacebookFeedResponse>(url).map { response -> response.status!! })
     }
 
 }

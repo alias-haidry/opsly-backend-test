@@ -1,5 +1,5 @@
 package com.opsly.backend.model.response
 
-data class SocialFeedResponse(val facebook: Any,
-                              val instagram: Any,
-                              val twitter: Any)
+data class SocialFeedResponse(val facebook: List<String>,
+                              val instagram: List<String>,
+                              val twitter: List<String>)
